@@ -1,7 +1,7 @@
 // UnVibeMe Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Random hero description rotation
+    // Cycling hero description rotation
     const heroDescriptions = [
         'Somewhere in your organization, a critical system exists because someone typed "build me a payment portal" into a chatbot and pressed enter. That person is now in marketing. The chatbot has no memory of the conversation. You have questions. Let\'s talk.',
         '"It\'s just a demo," they said. "We\'ll rebuild it properly later," they said. That was 18 months ago. The demo now has 50,000 users, a mobile app, and a database schema that appears to be held together by prayers and string concatenation. Let\'s talk.',
@@ -10,8 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const heroDescriptionEl = document.getElementById('hero-description');
     if (heroDescriptionEl) {
-        const randomIndex = Math.floor(Math.random() * heroDescriptions.length);
-        heroDescriptionEl.textContent = heroDescriptions[randomIndex];
+        let currentIndex = 0;
+        heroDescriptionEl.style.transition = 'opacity 0.5s ease';
+
+        setInterval(() => {
+            heroDescriptionEl.style.opacity = '0';
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % heroDescriptions.length;
+                heroDescriptionEl.textContent = heroDescriptions[currentIndex];
+                heroDescriptionEl.style.opacity = '1';
+            }, 500);
+        }, 15000);
     }
 
     // Mobile menu toggle
