@@ -1,6 +1,19 @@
 // UnVibeMe Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Random hero description rotation
+    const heroDescriptions = [
+        'Somewhere in your organization, a critical system exists because someone typed "build me a payment portal" into a chatbot and pressed enter. That person is now in marketing. The chatbot has no memory of the conversation. You have questions. Let\'s talk.',
+        '"It\'s just a demo," they said. "We\'ll rebuild it properly later," they said. That was 18 months ago. The demo now has 50,000 users, a mobile app, and a database schema that appears to be held together by prayers and string concatenation. Let\'s talk.',
+        'Someone asked an AI to write "a quick prototype." The AI delivered 12,000 lines of enterprise-grade architecture for a todo list. Somehow this is now running your HR system. The original prompt has been lost to time. Let\'s talk.'
+    ];
+
+    const heroDescriptionEl = document.getElementById('hero-description');
+    if (heroDescriptionEl) {
+        const randomIndex = Math.floor(Math.random() * heroDescriptions.length);
+        heroDescriptionEl.textContent = heroDescriptions[randomIndex];
+    }
+
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
